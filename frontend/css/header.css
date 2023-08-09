@@ -1,0 +1,88 @@
+/* 헤더바 */
+header {
+  border-bottom: 1px solid #ededef;
+}
+
+/* 인포바 */
+.info-bar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 0px 10px;
+}
+
+.info-bar__time {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  /* transition: all 2s ease-in-out 1s; */
+}
+
+.info-bar__time:hover {
+  /* width: 100px;
+  height: 100px;
+  font-size: 100px; */
+  animation: time_huge 2s infinite alternate;
+}
+
+@keyframes time_huge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(10);
+  }
+}
+
+.info-bar__icons {
+  margin-right: 5px;
+}
+
+.info-bar__icons img {
+  width: 20px;
+}
+
+/* 메뉴바 */
+.menu-bar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.menu-bar__location {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menu-bar__location img {
+  width: 15px;
+}
+
+.menu-bar__location--icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.menu-bar__icons {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-bar__icons img {
+  width: 25px;
+  margin-right: 10px;
+}

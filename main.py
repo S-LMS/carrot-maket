@@ -7,6 +7,17 @@ import sqlite3
 
 con = sqlite3.connect('db.db', check_same_thread=False)
 cur = con.cursor()
+# cur.execute(f"""
+#                 CREATE TABLE IF NOT EXISTS items(
+#                 id INTEGER PRIMARY KEY,
+#                 title TEXT NOT NULL,
+#                 image BLOB,
+#                 price INTEGER NOT NULL,
+#                 description TEXT,
+#                 place TEXT NOT NULL,
+#                 inserAt INTEGER NOT NULL
+#                 );
+#             """)
 
 app = FastAPI()
 
@@ -50,4 +61,23 @@ async def get_image(item_id):
                             """).fetchone()[0]
     # 16진법을 2진변환
     return Response(content=bytes.fromhex(image_bytes))
+
+
+
+@app.post('/signup')
+def signup(id:Annotated[str, Form()],
+           password:Annotated[str, Form()],
+           name:Annotated[str, Form()],
+           email:Annotated[str, Form()]):
+    cur.execute(f"""
+                INSERT INTO users(id, name, email, password) 
+                VALUES ('{id}', '{name}', '{email}', '{password}')
+                """)
+    con.commit()
+    
+    print(id, password)
+    return '200'
+
+
+
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
